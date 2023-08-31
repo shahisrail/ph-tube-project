@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog site</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <h1 class="text-center text-3xl font-medium mt-5">Discuss the scope of var, let, and const</h1>
+  <div class="flex gap-10 p-16">
+    <div>
+      <h1 class="text-2xl text-center font-medium ">var</h1>
+      <div>
+        <li>Block Scope: Variables declared with let are block-scoped, meaning they are only accessible within the block
+          in which
+          they are defined (e.g., within an if statement or loop).</li>
+        <li>Hoisting: Like var, let variables are also hoisted, but they are not initialized with a value until their
+          declaration
+          statement is reached. Trying to use a let variable before declaration will result in a ReferenceError.</li>
+        <li>No Global Property: Unlike var, let does not create properties on the global object (e.g., window in a
+          browser).</li>
+      </div>
+
+    </div>
+    <div>
+      <h1 class="text-2xl text-center font-medium">const</h1>
+      <div>
+        <li>Function Scope: Variables declared with var are function-scoped. This means they are only accessible within
+          the function
+          in which they are defined.</li>
+        <li>Hoisting: Variables declared with var are hoisted to the top of their containing function or global scope.
+          This means
+          you can use a var variable before it's declared, but it will have an initial value of undefined.</li>
+        <li>No Block Scope: Unlike let and const, var does not have block-level scope. It means a var variable declared
+          within a
+          block (like an if statement or a loop) is accessible outside that block.</li>
+        <li>Global Scope: If a var variable is declared outside of any function or block, it becomes a global variable,
+          accessible
+          throughout the entire program.</li>
+      </div>
+
+    </div>
+    <div>
+      <h1 class="text-2xl text-center font-medium">let</h1>
+      <div>
+        <li>Block Scope: Variables declared with const are also block-scoped, just like let.
+        </li>
+        <li>Constant Value: const variables must be assigned a value when declared, and once assigned, their value
+          cannot be
+          changed. This makes them suitable for defining constants.</li>
+        <li>
+          Hoisting: Like let, const variables are hoisted but are not initialized until their declaration statement is
+          reached.
+        </li>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="text-center text-3xl font-medium mt-5">Tell us the use cases of null and undefined</h1>
+  <div class="flex gap-10 p-16">
+    <div>
+      <h1 class="text-2xl text-center font-medium">null</h1>
+      <div>
+        <li>Block Scope: Variables declared with let are block-scoped, meaning they are only accessible within the block
+          in which
+          they are defined (e.g., within an if statement or loop).</li>
+        <li>Hoisting: Like var, let variables are also hoisted, but they are not initialized with a value until their
+          declaration
+          statement is reached. Trying to use a let variable before declaration will result in a ReferenceError.</li>
+        <li>No Global Property: Unlike var, let does not create properties on the global object (e.g., window in a
+          browser).</li>
+      </div>
+
+    </div>
+    <div>
+      <h1 class="text-2xl text-center font-medium">undefined</h1>
+      <div>
+        <li>Null is basically an assignment value given to a variable. The variable which has been assigned as null
+          contains no
+          value.</li>
+        <li>Null in JavaScript means an empty value and is also a primitive type in JavaScript. The variable which has
+          been assigned
+          as null contains no value. Undefined, on the other hand, means the variable has been declared, but its value
+          has not
+          been assigned.</li>
+      </div>
+    </div>
+  </div>
+  <h1 class="text-center text-3xl font-medium mt-5">What do you mean by REST API?</h1>
+  <div class="flex gap-10 p-16">
+    <div>
+      <h1 class="text-2xl text-center font-medium">API</h1>
+      <div>
+        <li>Block Scope: Variables declared with let are block-scoped, meaning they are only accessible within the block
+          in which
+          they are defined (e.g., within an if statement or loop).</li>
+        <li>Hoisting: Like var, let variables are also hoisted, but they are not initialized with a value until their
+          declaration
+          statement is reached. Trying to use a let variable before declaration will result in a ReferenceError.</li>
+        <li>No Global Property: Unlike var, let does not create properties on the global object (e.g., window in a
+          browser).</li>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
