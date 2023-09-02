@@ -1,4 +1,3 @@
-
 const allCatagory = async () => {
   const response = await fetch(
     "https://openapi.programming-hero.com/api/videos/categories"
@@ -10,26 +9,20 @@ const allCatagory = async () => {
     const div = document.createElement("div")
     div.innerHTML = `
      <button onclick="hanldelLoadData('${Catagory.category_id}')" class = "btn hover:bg-[#FF1F3D]">${Catagory.category}</button>
-    `
+     `
     tabcontainer.appendChild(div)
   });
   console.log(data.data);
 };
-
 const convertMinutesToHoursAndMinutes = (totalMinutesString) => {
   const totalMinutes = parseInt(totalMinutesString);
   if (isNaN(totalMinutes)) {
     return "";
   }
-
   const hours = Math.floor(totalMinutes / 3600);
   const minutes = Math.floor((totalMinutes % 3600) / 60);
-
   return `${hours} hours ${minutes} minutes`;
 };
-
-// Add a bubble sort function to sort data based on a given property
-
 let golabal;
 
 const hanldelLoadData = async (id = '1000') => {
@@ -37,8 +30,8 @@ const hanldelLoadData = async (id = '1000') => {
   const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`)
   const data = await response.json()
   view(data.data)
-
 };
+
 const view = (data) => {
   const cradContainer = document.getElementById('crad-container');
   cradContainer.innerHTML = "";
@@ -58,6 +51,7 @@ const view = (data) => {
     data.forEach((details) => {
       console.log(details);
       const div = document.createElement('div');
+
       div.innerHTML = `
     <div class="card h-[400px]  bg-base-100 shadow-xl">
   <figure class="relative">
@@ -99,6 +93,7 @@ const view = (data) => {
 }
 const sortView = async () => {
   const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${golabal}`)
+
   const data = await response.json()
   const sort = data.data.sort((a, b) => {
     const view1 = a.others.views.slice(0, -1)
@@ -107,8 +102,6 @@ const sortView = async () => {
   })
   view(sort)
 }
-
-// Initialize the page
 allCatagory();
 hanldelLoadData('1000');
 
