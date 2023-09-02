@@ -33,6 +33,7 @@ const hanldelLoadData = async (id = '1000') => {
 };
 
 const view = (data) => {
+
   const cradContainer = document.getElementById('crad-container');
   cradContainer.innerHTML = "";
 
@@ -40,19 +41,19 @@ const view = (data) => {
     const errorDiv = document.createElement('div');
     errorDiv.innerHTML = `
             
-  <div class="grid grid-cols-1 p-[1.5rem] text-center">
-      <img class=" ml-[7rem] lg:ml-[202%] md:ml-[16rem]" src="error.png" alt="Error" class="error-image">
+<div class="grid grid-cols-1 md:p-[1.5rem] text-center">
+      <img class=" w-1/2 mx-auto  lg:ml-[202%] md:ml-[16rem]" src="error.png" alt="Error" class="error-image">
       <p class="text-center md:w-[400px] ml-[2rem] md:ml-[9rem] lg:ml-[162%] mt-5 text-3xl">Oops!! Sorry, There is no content here</p>
   </div>
             `;
     cradContainer.appendChild(errorDiv);
 
-  } else {
-    data.forEach((details) => {
-      console.log(details);
-      const div = document.createElement('div');
+  }
+  data.forEach((details) => {
+    console.log(details);
+    const div = document.createElement('div');
 
-      div.innerHTML = `
+    div.innerHTML = `
     <div class="card h-[400px]  bg-base-100 shadow-xl">
   <figure class="relative">
     <img class="h-[400px]  " src="${details?.thumbnail}" alt="">
@@ -87,9 +88,9 @@ const view = (data) => {
         </div>
       </div>
     `
-      cradContainer.appendChild(div)
-    });
-  }
+    cradContainer.appendChild(div)
+  });
+
 }
 const sortView = async () => {
   const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${golabal}`)
