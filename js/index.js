@@ -1,6 +1,7 @@
- const allCatagory = async () => {
+
+const allCatagory = async () => {
   const response = await fetch(
-    " https://openapi.programming-hero.com/api/videos/categories"
+    "https://openapi.programming-hero.com/api/videos/categories"
   );
   const data = await response.json();
   const tabcontainer = document.getElementById('tab-container')
@@ -26,38 +27,48 @@ const convertMinutesToHoursAndMinutes = (totalMinutesString) => {
 
   return `${hours} hours ${minutes} minutes`;
 };
-const hanldelLoadData = async (id) => {
+
+// Add a bubble sort function to sort data based on a given property
+
+let golabal;
+
+const hanldelLoadData = async (id = '1000') => {
+  golabal = id
   const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`)
   const data = await response.json()
+  view(data.data)
 
+};
+const view = (data) => {
   const cradContainer = document.getElementById('crad-container');
   cradContainer.innerHTML = "";
-  if (!data.data || data.data.length === 0) {
+
+  if (!data || data.length === 0) {
     const errorDiv = document.createElement('div');
     errorDiv.innerHTML = `
             
   <div class="grid grid-cols-1 p-[1.5rem] text-center">
-      <img class=" ml-[8rem] lg:ml-[184%] md:ml-[16rem]" src="error.png" alt="Error" class="error-image">
-      <p class="text-center w-[400px] md:ml-[8rem] lg:ml-[150%] mt-5 text-3xl">Oops!! Sorry, There is no content here</p>
+      <img class=" ml-[7rem] lg:ml-[202%] md:ml-[16rem]" src="error.png" alt="Error" class="error-image">
+      <p class="text-center md:w-[400px] ml-[2rem] md:ml-[9rem] lg:ml-[162%] mt-5 text-3xl">Oops!! Sorry, There is no content here</p>
   </div>
             `;
     cradContainer.appendChild(errorDiv);
 
-  }
-  else {
-    data.data.forEach((details) => {
+  } else {
+    data.forEach((details) => {
       console.log(details);
       const div = document.createElement('div');
       div.innerHTML = `
     <div class="card h-[400px]  bg-base-100 shadow-xl">
-      <figure>
-          <img class="h-[400px]  " src="${details?.thumbnail}" alt="">
-      </figure>
-           <div class=" relative  justify-end">
-            <h2 class = "" font-semibold style="background-color: black;  color: white; width: 155px;  position: relative;  text-align: center; left:190px; top:-32px;">
-              ${convertMinutesToHoursAndMinutes(details?.others?.posted_date)}
-            </h2>
-          </div>
+  <figure class="relative">
+    <img class="h-[400px]  " src="${details?.thumbnail}" alt="">
+  </figure>
+     <div>
+     <p
+      style="background-color: black;  color: white;   position:absolute;  text-align: center; font:semibold;left:190px; top:160px; border-radius:10px; ">
+      ${convertMinutesToHoursAndMinutes(details?.others?.posted_date)}
+     </p>
+      </div>
           <div class="card-body">
           <div class="flex mb-5">
             <div>
@@ -77,20 +88,27 @@ const hanldelLoadData = async (id) => {
                 ${details?.authors[0]?.verified ? '<img src="verify-blue.png" alt="Verified" />' : ''}
               </div>
                <h2 class="ml-[0.25rem]">${details.others.views}</h2>
-                
-    
              </div>
           </div>
         </div>
       </div>
     `
       cradContainer.appendChild(div)
-    })
+    });
   }
-
+}
+const sortView = async () => {
+  const response = await fetch(`https://openapi.programming-hero.com/api/videos/category/${golabal}`)
+  const data = await response.json()
+  const sort = data.data.sort((a, b) => {
+    const view1 = a.others.views.slice(0, -1)
+    const view2 = b.others.views.slice(0, -1)
+    return view2 - view1
+  })
+  view(sort)
 }
 
-allCatagory()
-hanldelLoadData('1000')
-
+// Initialize the page
+allCatagory();
+hanldelLoadData('1000');
 
